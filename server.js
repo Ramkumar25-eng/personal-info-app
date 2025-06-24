@@ -7,15 +7,15 @@ const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
-// Middlewares
+// ✅ Middlewares
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public')); // to serve index.html and details.html
 
-// Routes
-app.use('/', userRoutes);
+// ✅ Routes
+app.use("/api/users", userRoutes); // ✅ Important fix here
 
-// Connect to MongoDB and Start Server
+// ✅ Connect to MongoDB and Start Server
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true

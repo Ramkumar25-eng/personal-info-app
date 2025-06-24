@@ -18,6 +18,8 @@
       <input type="date" name="dob" class="w-full p-2 border rounded" required>
       <input type="text" name="number" placeholder="Phone Number" class="w-full p-2 border rounded" required>
       <input type="email" name="email" placeholder="Email" class="w-full p-2 border rounded" required>
+      <input type="file" id="avatarInput" accept="image/*" class="w-full p-2 border rounded">
+      <img id="avatarPreview" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Preview" class="w-20 h-20 mx-auto mt-2 rounded-full">
       <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
         Submit
       </button>
@@ -47,7 +49,8 @@
     const data = Object.fromEntries(form.entries());
     data.avatar = avatarData;
 
-    const res = await fetch("/signup", {
+    const res = await fetch("https://personal-info-backend.onrender.com/api/users", {
+
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
